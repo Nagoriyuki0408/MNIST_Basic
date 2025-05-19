@@ -15,8 +15,8 @@ transform = transforms.Compose([
 ])
 
 # 加载数据集
-train_dataset = datasets.MNIST('./data', train=True, download=True, transform=transform)
-test_dataset = datasets.MNIST('./data', train=False, transform=transform)
+train_dataset = datasets.MNIST('../data', train=True, download=True, transform=transform)
+test_dataset = datasets.MNIST('../data', train=False, transform=transform)
 train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=64, shuffle=True)
 test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=1000, shuffle=False)
 
@@ -31,4 +31,4 @@ for epoch in range(1, 4):
     test(model, device, test_loader)
 
 # 保存模型
-torch.save(model.state_dict(), "mnist_cnn.pth")
+torch.save(model.state_dict(), "../mnist_cnn.pth")

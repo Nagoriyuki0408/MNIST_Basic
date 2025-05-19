@@ -1,7 +1,7 @@
 import torch
 from PIL import Image
 from torchvision import transforms
-from model import CNN
+from py.model import CNN
 
 def predict_image(image_path):
     transform = transforms.Compose([
@@ -16,7 +16,7 @@ def predict_image(image_path):
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = CNN().to(device)
-    model.load_state_dict(torch.load('mnist_cnn.pth'))
+    model.load_state_dict(torch.load('../mnist_cnn.pth'))
     model.eval()
 
     with torch.no_grad():
@@ -24,4 +24,5 @@ def predict_image(image_path):
         _, predicted = torch.max(output, 1)
         print(f'预测结果：{predicted.item()}')
 
-predict_image('D:\\mnist_cnn\\2.png') # 替换为你的图片路径
+predict_image('/9.png') # 替换为你的图片路径
+
